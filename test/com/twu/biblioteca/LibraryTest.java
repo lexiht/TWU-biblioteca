@@ -7,5 +7,8 @@ import java.util.ArrayList;
 public class LibraryTest {
     private Library library;
 
-
+    @Before
+    public void initialiseLibrary() {
+        library = new Library();
+    }
 }

@@ -8,11 +8,11 @@ public class Movie {
     private Boolean checkedOut;
 
     public Movie(String name, String director, String year, String rating) {
-        name = name;
-        director = director;
-        year = year;
-        rating = rating;
-        checkedOut = false;
+        this.name = name;
+        this.director = director;
+        this.year = year;
+        this.rating = rating;
+        this.checkedOut = false;
     }
 
     public Boolean isCheckedOut() {
@@ -33,5 +33,15 @@ public class Movie {
 
     public String getRating() {
         return rating;
+    }
+
+    public void checkOut() {
+        System.out.println(PrintHelper.CHECKOUT_MOVIE);
+        checkedOut = true;
+    }
+
+    public void returnMovie() {
+        System.out.println(PrintHelper.RETURN_MOVIE);
+        checkedOut = false;
     }
 }

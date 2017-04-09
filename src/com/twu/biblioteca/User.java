@@ -8,14 +8,14 @@ public class User {
     private String phone;
     private String libraryNumber;
     private String password;
-    private Boolean loggedIn = false;
+    public Boolean loggedIn = false;
 
     public User(String name, String email, String phone, String libraryNumber, String password) {
-        name = name;
-        email = email;
-        phone = phone;
-        libraryNumber = libraryNumber;
-        password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.libraryNumber = libraryNumber;
+        this.password = password;
     }
 
     public String getLibraryNumber() {
@@ -42,17 +42,9 @@ public class User {
         return phone;
     }
 
-    public void login(String libraryNumber, String password) {
-        if (authenticateUser(libraryNumber, password)) {
-            System.out.println(PrintHelper.LOGIN_SUCCESS);
-            loggedIn = true;
-        } else {
-            System.out.println(PrintHelper.LOGIN_ERROR);
-        }
-    }
 
-    private Boolean authenticateUser(String libraryNumber, String password) {
-        return libraryNumber.equals(libraryNumber) && password.equals(password);
+    public Boolean isUser(String libraryNumber, String password) {
+        return getLibraryNumber().equals(libraryNumber) && getPassword().equals(password);
     }
 }
 

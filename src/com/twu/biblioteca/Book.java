@@ -7,9 +7,9 @@ public class Book {
     private Boolean checkedOut;
 
     public Book(String title, String author, String year) {
-        title = title;
-        author = author;
-        year = year;
+        this.title = title;
+        this.author = author;
+        this.year = year;
         checkedOut = false;
     }
 
