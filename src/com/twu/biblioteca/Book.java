@@ -30,12 +30,10 @@ public class Book {
     }
 
     public void checkOut() {
-        System.out.println(PrintHelper.CHECKOUT_BOOK);
         checkedOut = true;
     }
 
     public void returnBook() {
-        System.out.println(PrintHelper.RETURN_BOOK);
         checkedOut = false;
     }
 }

@@ -26,10 +26,6 @@ public class User {
         return password;
     }
 
-    public Boolean isLoggedIn() {
-        return loggedIn;
-    }
-
     public String getName() {
         return name;
     }
@@ -43,7 +39,7 @@ public class User {
     }
 
 
-    public Boolean isUser(String libraryNumber, String password) {
+    public Boolean isLoggedIn(String libraryNumber, String password) {
         return getLibraryNumber().equals(libraryNumber) && getPassword().equals(password);
     }
 }

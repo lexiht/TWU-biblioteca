@@ -8,18 +8,10 @@ public class Library {
     private final HashMap<Integer, Book> books = new HashMap<Integer, Book>();
     private final HashMap<Integer, Movie> movies = new HashMap<Integer, Movie>();
     private final HashMap<Integer, User> users = new HashMap<Integer, User>();
-    private Scanner userInput;
-    private String userLibraryNumber;
-    private String userPassword;
-    private Menu menu;
-    private User currentUser;
+    private BibliotecaApp biblioteca;
 
     public Library() {
         setupData();
-        while (currentUser == null) {
-            loginUser();
-        }
-        menu = new Menu(this);
     }
 
     private void setupData() {
@@ -28,23 +20,14 @@ public class Library {
         addUsers();
     }
 
-    private void loginUser() {
-        System.out.println(PrintHelper.WELCOME + PrintHelper.ASK_LIBRARY_NUMBER);
-        userInput = new Scanner(System.in);
-        userLibraryNumber = userInput.next();
-        System.out.println(PrintHelper.ASK_PASSWORD);
-        userPassword = userInput.next();
+    public User loginUser(String libraryNumber, String password) {
 
         for (User user : users.values()) {
-            if (user.isUser(userLibraryNumber, userPassword)) {
-                System.out.println(PrintHelper.LOGIN_SUCCESS);
+            if (user.isLoggedIn(libraryNumber, password)) {
                 user.loggedIn = true;
-                currentUser = user;
+                return user;
                 break;
-            } else {
-                System.out.println(PrintHelper.LOGIN_ERROR);
             }
-            break;
         }
     }
 
@@ -63,9 +46,9 @@ public class Library {
     }
 
     private void addUsers() {
-        users.put(1, new User("Ivan", "ivan@gmail.com", "0123456", "123-4567", "ivan"));
-        users.put(2, new User("Lexi", "lexi@gmail.com", "0987654", "098-7654", "lexi"));
-        users.put(3, new User("Stan", "stan@gmail.com", "1357909", "246-8024", "stan"));
+        users.put(1, new User("Ivan", "ivan@gmail.com", "0123456", "111-1111", "ivan"));
+        users.put(2, new User("Lexi", "lexi@gmail.com", "0987654", "222-2222", "lexi"));
+        users.put(3, new User("Stan", "stan@gmail.com", "1357909", "333-3333", "stan"));
     }
 
     public HashMap<Integer, Book> getBooks() {
