@@ -8,7 +8,7 @@ public class BibliotecaApp {
 
     private static User currentUser = null;
     private static Menu menu;
-    private static Scanner userInput = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     private static String libraryNumber;
     private static String password;
 
@@ -36,9 +36,9 @@ public class BibliotecaApp {
 
     private static void getCredential() {
         System.out.println("Please login before proceed. Type your library number: ");
-        libraryNumber = userInput.nextLine();
+        libraryNumber = scanner.nextLine();
         System.out.println("Type your password: ");
-        password = userInput.nextLine();
+        password = scanner.nextLine();
     }
 
     private static void getMenuOptions() {
@@ -53,8 +53,8 @@ public class BibliotecaApp {
                 "8 - Quit \n";
 
         System.out.println(menuOptions);
-        String selectedOption = userInput.nextLine();
-        filterInputs(selectedOption);
+        String userInput = scanner.nextLine();
+        filterInputs(userInput);
     }
 
     private static void filterInputs(String userInput) {
@@ -68,19 +68,23 @@ public class BibliotecaApp {
                 break;
             case 3 :
                 System.out.println("Type the title of the book you want to checkout:");
-                print(menu.checkoutBook(), "checkout book");
+                String bookToCheckout = scanner.nextLine();
+                print(menu.checkoutBook(bookToCheckout), "checkout book");
                 break;
             case 4 :
                 System.out.println("Type the name of the movie you want to checkout:");
-                print(menu.checkoutMovie(), "checkout movie");
+                String movieToCheckout = scanner.nextLine();
+                print(menu.checkoutMovie(movieToCheckout), "checkout movie");
                 break;
             case 5 :
                 System.out.println("Type the title of the book you want to return");
-                print(menu.returnBook(), "return book");
+                String bookToReturn = scanner.nextLine();
+                print(menu.returnBook(bookToReturn), "return book");
                 break;
             case 6 :
                 System.out.println("Type the title of the movie you want to return");
-                print(menu.returnMovie(), "return movie");
+                String movieToReturn = scanner.nextLine();
+                print(menu.returnMovie(movieToReturn), "return movie");
                 break;
             case 7 :
                 menu.getCurrentUserDetails();

@@ -41,12 +41,9 @@ public class Menu {
                 "Password: " + currentUser.getPassword() + "\n");
     }
 
-    public Boolean checkoutBook() {
-        userInput = new Scanner(System.in);
-        String selectedBook = userInput.nextLine();
-
+    public Boolean checkoutBook(String userInput) {
         for (Book book : library.getBooks().values()) {
-            if (book.getTitle().equalsIgnoreCase(selectedBook)) {
+            if (book.getTitle().equalsIgnoreCase(userInput)) {
                 book.checkOut();
                 status = true;
             }
@@ -54,12 +51,9 @@ public class Menu {
         return status;
     }
 
-    public Boolean checkoutMovie() {
-        userInput = new Scanner(System.in);
-        String selectedMovie = userInput.nextLine();
-
+    public Boolean checkoutMovie(String userInput) {
         for (Movie movie : library.getMovies().values()) {
-            if (movie.getName().equalsIgnoreCase(selectedMovie)) {
+            if (movie.getName().equalsIgnoreCase(userInput)) {
                 movie.checkOut();
                 status = true;
             }
@@ -67,12 +61,9 @@ public class Menu {
         return status;
     }
 
-    public Boolean returnMovie() {
-        userInput = new Scanner(System.in);
-        String selectedMovie = userInput.nextLine();
-
+    public Boolean returnMovie(String userInput ) {
         for (Movie movie : library.getMovies().values()) {
-            if (movie.getName().equalsIgnoreCase(selectedMovie)) {
+            if (movie.getName().equalsIgnoreCase(userInput)) {
                 movie.returnMovie();
                 status = true;
             }
@@ -80,12 +71,9 @@ public class Menu {
         return status;
     }
 
-    public Boolean returnBook() {
-        userInput = new Scanner(System.in);
-        String selectedBook = userInput.nextLine();
-
+    public Boolean returnBook(String userInput) {
         for (Book book : library.getBooks().values()) {
-            if (book.getTitle().equalsIgnoreCase(selectedBook)) {
+            if (book.getTitle().equalsIgnoreCase(userInput)) {
                 book.returnBook();
                 status = true;
             }

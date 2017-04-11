@@ -14,13 +14,31 @@ public class UserTest {
     }
 
     @Test
-    public void shouldUserDetails() {
+    public void shouldShowUserName() {
         assertEquals("Lexi", user.getName());
+    }
+
+    @Test
+    public void shouldShowUserEmail() {
         assertEquals("lexi@gmail.com", user.getEmail());
+    }
+
+    @Test
+    public void shouldShowUserPhone() {
         assertEquals("123456789", user.getPhone());
+    }
+
+    @Test
+    public void shouldShowUserLibraryNumber() {
         assertEquals("123-4567", user.getLibraryNumber());
+    }
+
+    @Test
+    public void shouldShowUserPassword() {
         assertEquals("lexi", user.getPassword());
     }
+
+
 }
 
 

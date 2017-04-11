@@ -12,17 +12,13 @@ public class LibraryTest {
     private final HashMap<Integer, Book> books = new HashMap<Integer, Book>();
     private final HashMap<Integer, Movie> movies = new HashMap<Integer, Movie>();
     private User user;
-    private Book book;
-    private Movie movie;
 
     @Before
     public void setupData() {
-        book = new Book("The heart of the sea", "Becky", "2017");
         user = new User("Ivan", "ivan@gmail.com", "0123456", "111-1111", "ivan");
-        movie = new Movie("The pursue of Happiness", "Smith", "2011", "4");
-        movies.put(1, movie);
+        movies.put(1, new Movie("The pursue of Happiness", "Smith", "2011", "4"));
         users.put(1, user );
-        books.put(1, book);
+        books.put(1, new Book("The heart of the sea", "Becky", "2017"));
     }
 
     @Test
