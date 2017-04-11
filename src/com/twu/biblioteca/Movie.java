@@ -36,12 +36,10 @@ public class Movie {
     }
 
     public void checkOut() {
-        System.out.println(PrintHelper.CHECKOUT_MOVIE);
         checkedOut = true;
     }
 
     public void returnMovie() {
-        System.out.println(PrintHelper.RETURN_MOVIE);
         checkedOut = false;
     }
 }

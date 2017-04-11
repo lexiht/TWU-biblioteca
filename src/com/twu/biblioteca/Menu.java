@@ -1,126 +1,95 @@
 package com.twu.biblioteca;
 
 import java.util.Scanner;
-import com.twu.biblioteca.Library;
-import java.util.Map;
 
 public class Menu {
-    private final Library library;
-    private User currentUser;
+    private Library library;
     private Scanner userInput;
+    private Boolean status = false;
 
     public Menu(Library library) {
         this.library = library;
-        String selectedOption;
-        do {
-            System.out.println(PrintHelper.MENU_OPTIONS);
-            userInput = new Scanner(System.in);
-            selectedOption = userInput.next();
-            filterInputs(selectedOption);
-        } while (true);
     }
 
-    private void filterInputs(String userInput) {
-        int userPick = Integer.parseInt(userInput);
-        switch(userPick) {
-            case 1 :
-                getBooksListDetails();
-                break;
-            case 2 :
-                getMoviesListDetails();
-                break;
-            case 3 :
-                checkoutBook();
-                break;
-            case 4 :
-                checkoutMovie();
-                break;
-            case 7 :
-                getCurrentUserDetails();
-                break;
-            case 8 :
-                System.out.println(PrintHelper.QUIT);
-                System.exit(0);
-            default :
-                System.out.println(PrintHelper.INVALID_OPTION);
-        }
-    }
-
-    private void getBooksListDetails() {
+    public void getBooksListDetails() {
         for (Book book : library.getBooks().values()) {
             if (!book.isCheckedOut()) {
-                System.out.println( book.getTitle() + "\n" +
-                                    book.getAuthor() + "\n" +
-                                    book.getYearPublished() + "\n");
+                System.out.println( "Title: " + book.getTitle() + "\n" +
+                                    "Author: " + book.getAuthor() + "\n" +
+                                    "Year: " + book.getYearPublished() + "\n");
             }
         }
     }
 
-    private void getMoviesListDetails() {
+    public void getMoviesListDetails() {
         for (Movie movie : library.getMovies().values()) {
             if (!movie.isCheckedOut()) {
-                System.out.println( movie.getName() + "\n" +
-                                    movie.getDirector() + "\n" +
-                                    movie.getYearReleased() + "\n" +
-                                    movie.getRating() + "\n");
+                System.out.println( "Name: " + movie.getName() + "\n" +
+                                    "Director: " + movie.getDirector() + "\n" +
+                                    "Year: " + movie.getYearReleased() + "\n" +
+                                    "Rating: " + movie.getRating() + "\n");
             }
         }
     }
 
-    private void getCurrentUserDetails() {
-        currentUser = library.getCurrentUser();
-        System.out.println( currentUser.getName() + "\n" +
-                            currentUser.getEmail() + "\n" +
-                            currentUser.getPhone() + "\n" +
-                            currentUser.getLibraryNumber() + "\n" +
-                            currentUser.getPassword() + "\n");
+    public void getCurrentUserDetails() {
+        User currentUser = BibliotecaApp.getCurrentUser();
+        System.out.println( "Name: " + currentUser.getName() + "\n" +
+                            "Email: " + currentUser.getEmail() + "\n" +
+                            "Phone: " + currentUser.getPhone() + "\n" +
+                            "Library Number: " + currentUser.getLibraryNumber() + "\n" +
+                            "Password: " + currentUser.getPassword() + "\n");
     }
 
-    private void checkoutBook() {
-        System.out.println(PrintHelper.ASK_BOOK_TO_CHECKOUT);
+    public Boolean checkoutBook() {
         userInput = new Scanner(System.in);
         String selectedBook = userInput.nextLine();
-        System.out.println(selectedBook);
 
-        library.getBooks().values().stream()
-                .filter(book -> book.getTitle().equalsIgnoreCase(selectedBook))
-                .findFirst().get();
-
-//            if (book.getTitle().equalsIgnoreCase(selectedBook)) {
-//                book.checkOut();
-//            } else {
-//                System.out.println(PrintHelper.CHECKOUT_BOOK_ERROR);
-//            }
+        for (Book book : library.getBooks().values()) {
+            if (book.getTitle().equalsIgnoreCase(selectedBook)) {
+                book.checkOut();
+                status = true;
+            }
+        }
+        return status;
     }
 
-    private void checkoutMovie() {
-        // same problem as above
-        System.out.println(PrintHelper.ASK_MOVIE_TO_CHECKOUT);
+    public Boolean checkoutMovie() {
         userInput = new Scanner(System.in);
-        String selectedMovie = userInput.next();
+        String selectedMovie = userInput.nextLine();
 
         for (Movie movie : library.getMovies().values()) {
             if (movie.getName().equalsIgnoreCase(selectedMovie)) {
                 movie.checkOut();
-            } else {
-                System.out.println(PrintHelper.CHECKOUT_MOVIE_ERROR);
+                status = true;
             }
         }
+        return status;
     }
 
-//    private void returnMovie() {
-//        // same problem as above
-//        System.out.println(PrintHelper.ASK_MOVIE_TO_CHECKOUT);
-//        userInput = new Scanner(System.in);
-//        String selectedMovie = userInput.next();
-//
-//        for (Movie movie : library.getMovies().values()) {
-//            if (movie.getName().equalsIgnoreCase(selectedMovie)) {
-//                movie.checkOut();
-//            } else {
-//                System.out.println(PrintHelper.CHECKOUT_MOVIE_ERROR);
-//            }
-//            break;
-//        }
-//    }
+    public Boolean returnMovie() {
+        userInput = new Scanner(System.in);
+        String selectedMovie = userInput.nextLine();
+
+        for (Movie movie : library.getMovies().values()) {
+            if (movie.getName().equalsIgnoreCase(selectedMovie)) {
+                movie.returnMovie();
+                status = true;
+            }
+        }
+        return status;
+    }
+
+    public Boolean returnBook() {
+        userInput = new Scanner(System.in);
+        String selectedBook = userInput.nextLine();
+
+        for (Book book : library.getBooks().values()) {
+            if (book.getTitle().equalsIgnoreCase(selectedBook)) {
+                book.returnBook();
+                status = true;
+            }
+        }
+        return status;
+    }
 }

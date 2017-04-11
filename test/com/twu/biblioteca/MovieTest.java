@@ -19,11 +19,23 @@ public class MovieTest {
     }
 
     @Test
-    public void shouldShowBookDetails() {
-        assertEquals("Guardian of the galaxy II", movie.getName());
-        assertEquals("James Smith", movie.getDirector());
-        assertEquals("2017", movie.getYearReleased());
+    public void canShowRating() {
         assertEquals("5", movie.getRating());
+    }
+
+    @Test
+    public void canShowTitle() {
+        assertEquals("Guardian of the galaxy II", movie.getName());
+    }
+
+    @Test
+    public void canShowDirector() {
+        assertEquals("James Smith", movie.getDirector());
+    }
+
+    @Test
+    public void canShowYearOfReleased() {
+        assertEquals("2017", movie.getYearReleased());
     }
 
 }

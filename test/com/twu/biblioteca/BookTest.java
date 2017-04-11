@@ -18,9 +18,17 @@ public class BookTest {
     }
 
     @Test
-    public void shouldShowBookDetails() {
+    public void canShowTitle() {
         assertEquals("The Art of Happiness", book.getTitle());
+    }
+
+    @Test
+    public void canShowAuthor() {
         assertEquals("Dalai Lama", book.getAuthor());
+    }
+
+    @Test
+    public void canShowYearOfPublished() {
         assertEquals("1998", book.getYearPublished());
     }
 
