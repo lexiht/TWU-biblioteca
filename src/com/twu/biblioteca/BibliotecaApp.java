@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import com.sun.xml.internal.fastinfoset.sax.SystemIdResolver;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -95,13 +93,6 @@ public class BibliotecaApp {
         }
     }
 
-    private static HashMap<String, ArrayList<String>> messageList = new HashMap<String, ArrayList<String>>(){{
-        put("checkout book", checkBookMessages);
-        put("checkout movie", checkMovieMessages);
-        put("return book", returnBookMessages);
-        put("return movie", returnMovieMessages);
-    }};
-
     private static ArrayList<String> checkBookMessages = new ArrayList<String>(){{
         add("Thank you! Enjoy the book");
         add("This book is not available");
@@ -121,6 +112,13 @@ public class BibliotecaApp {
     private static ArrayList<String> returnMovieMessages = new ArrayList<String>(){{
         add("Thank you for returning the movie");
         add("This is not a valid movie to return");
+    }};
+
+    private static HashMap<String, ArrayList<String>> messageList = new HashMap<String, ArrayList<String>>(){{
+        put("checkout book", checkBookMessages);
+        put("checkout movie", checkMovieMessages);
+        put("return book", returnBookMessages);
+        put("return movie", returnMovieMessages);
     }};
 
     private static void print(Boolean status, String typeOfMessages) {
