@@ -3,11 +3,11 @@ package com.twu.biblioteca;
 import java.util.Scanner;
 
 public class Menu {
-    private Library library;
+    private com.twu.biblioteca.Library library;
     private Scanner userInput;
     private Boolean status = false;
 
-    public Menu(Library library) {
+    public Menu(com.twu.biblioteca.Library library) {
         this.library = library;
     }
 
@@ -15,8 +15,8 @@ public class Menu {
         for (Book book : library.getBooks().values()) {
             if (!book.isCheckedOut()) {
                 System.out.println( "Title: " + book.getTitle() + "\n" +
-                                    "Author: " + book.getAuthor() + "\n" +
-                                    "Year: " + book.getYearPublished() + "\n");
+                        "Author: " + book.getAuthor() + "\n" +
+                        "Year: " + book.getYearPublished() + "\n");
             }
         }
     }
@@ -25,20 +25,20 @@ public class Menu {
         for (Movie movie : library.getMovies().values()) {
             if (!movie.isCheckedOut()) {
                 System.out.println( "Name: " + movie.getName() + "\n" +
-                                    "Director: " + movie.getDirector() + "\n" +
-                                    "Year: " + movie.getYearReleased() + "\n" +
-                                    "Rating: " + movie.getRating() + "\n");
+                        "Director: " + movie.getDirector() + "\n" +
+                        "Year: " + movie.getYearReleased() + "\n" +
+                        "Rating: " + movie.getRating() + "\n");
             }
         }
     }
 
     public void getCurrentUserDetails() {
-        User currentUser = BibliotecaApp.getCurrentUser();
+        User currentUser = com.twu.biblioteca.BibliotecaApp.getCurrentUser();
         System.out.println( "Name: " + currentUser.getName() + "\n" +
-                            "Email: " + currentUser.getEmail() + "\n" +
-                            "Phone: " + currentUser.getPhone() + "\n" +
-                            "Library Number: " + currentUser.getLibraryNumber() + "\n" +
-                            "Password: " + currentUser.getPassword() + "\n");
+                "Email: " + currentUser.getEmail() + "\n" +
+                "Phone: " + currentUser.getPhone() + "\n" +
+                "Library Number: " + currentUser.getLibraryNumber() + "\n" +
+                "Password: " + currentUser.getPassword() + "\n");
     }
 
     public Boolean checkoutBook() {

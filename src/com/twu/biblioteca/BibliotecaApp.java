@@ -68,7 +68,7 @@ public class BibliotecaApp {
                 break;
             case 3 :
                 System.out.println("Type the title of the book you want to checkout:");
-               print(menu.checkoutBook(), "checkout book");
+                print(menu.checkoutBook(), "checkout book");
                 break;
             case 4 :
                 System.out.println("Type the name of the movie you want to checkout:");
