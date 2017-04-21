@@ -54,6 +54,7 @@ public class BibliotecaApp {
 
         System.out.println(menuOptions);
         String userInput = scanner.nextLine();
+        menu.status = false;
         filterInputs(userInput);
     }
 
@@ -151,3 +152,5 @@ public class BibliotecaApp {
     }
 
 }
+
+// Write test for menu

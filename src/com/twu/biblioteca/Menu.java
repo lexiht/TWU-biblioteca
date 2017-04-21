@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
     private com.twu.biblioteca.Library library;
-    private Scanner userInput;
-    private Boolean status = false;
+    public Boolean status = false;
 
     public Menu(com.twu.biblioteca.Library library) {
         this.library = library;
