@@ -53,14 +53,14 @@ public class BibliotecaApp {
                 "8 - Quit \n";
 
         System.out.println(menuOptions);
-        String userInput = scanner.nextLine();
+        Integer userInput = scanner.nextInt();
         menu.status = false;
         filterInputs(userInput);
     }
 
-    private static void filterInputs(String userInput) {
-        int userPick = Integer.parseInt(userInput);
-        switch(userPick) {
+    private static void filterInputs(Integer userInput) {
+//        int userPick = Integer.parseInt(userInput);
+        switch(userInput) {
             case 1 :
                 menu.getBooksListDetails();
                 break;
